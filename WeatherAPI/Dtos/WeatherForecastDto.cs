@@ -19,4 +19,3 @@ namespace WeatherAPI.Dtos
         public string Summary { get; set; }
     }
 }
-

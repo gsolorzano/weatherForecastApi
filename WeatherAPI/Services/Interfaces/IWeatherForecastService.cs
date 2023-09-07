@@ -10,4 +10,3 @@ namespace WeatherAPI.Services.Interfaces
         Result InsertWeatherForecasts(List<WeatherForecastDto> weatherForecastDtos);
     }
 }
-

@@ -1,12 +1,11 @@
-﻿using FluentValidation.AspNetCore;
-using WeatherAPI.Configurations;
+﻿using WeatherAPI.Configurations;
 using WeatherAPI.Models;
 using WeatherAPI.Services;
 using WeatherAPI.Validators;
 
 namespace WeatherAPI
 {
-	public class Startup
+    public class Startup
 	{
         public Startup(IConfiguration configuration)
         {
@@ -68,4 +67,3 @@ namespace WeatherAPI
         }
     }
 }
-

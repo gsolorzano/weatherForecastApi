@@ -13,4 +13,3 @@ namespace WeatherAPI.Mappings
         }
 	}
 }
-

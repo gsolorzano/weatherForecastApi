@@ -6,4 +6,3 @@
         public string DatabaseName { get; set; }
     }
 }
-
