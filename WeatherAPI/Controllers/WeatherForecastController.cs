@@ -16,12 +16,12 @@ namespace WeatherAPI.Controllers
             _weatherForecastModel = weatherForecastModel;
 		}
 
-        [HttpGet("forecast")]
+        [HttpGet("forecasts")]
         [SwaggerOperation(Summary = "Fetches weather forecasts.")]
         [SwaggerResponse(200, "The weather forecasts were successfully retrieved.", typeof(List<WeatherForecastDto>))]
         [SwaggerResponse(400, "The request is bad.")]
         [SwaggerResponse(404, "Weather forecasts not found.")]
-        public IActionResult GetWeatherForecast()
+        public IActionResult GetWeatherForecasts()
         {
             var weatherForecastResult = _weatherForecastModel.GetWeatherForecasts();
 
@@ -31,6 +31,28 @@ namespace WeatherAPI.Controllers
             }
 
             return Ok(weatherForecastResult.Value);
+        }
+
+        [HttpPost("forecasts")]
+        [SwaggerOperation(Summary = "Creates weather forecasts.")]
+        [SwaggerResponse(200, "The weather forecasts were successfully created.")]
+        [SwaggerResponse(400, "The request is bad.")]
+        [SwaggerResponse(422)]
+        public IActionResult PostWeatherForecasts([FromBody] List<CreateWeatherForecastDto> createWeatherForecastsDtos)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var creationResult = _weatherForecastModel.CreateWeatherForecasts(createWeatherForecastsDtos);
+
+            if (creationResult.IsFailure)
+            {
+                return UnprocessableEntity(creationResult.Error);
+            }
+
+            return Ok();
         }
     }
 }

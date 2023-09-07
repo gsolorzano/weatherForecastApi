@@ -1,5 +1,8 @@
-﻿using WeatherAPI.Models;
+﻿using FluentValidation.AspNetCore;
+using WeatherAPI.Configurations;
+using WeatherAPI.Models;
 using WeatherAPI.Services;
+using WeatherAPI.Validators;
 
 namespace WeatherAPI
 {
@@ -15,9 +18,12 @@ namespace WeatherAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MongoDbConfiguration>(Configuration.GetSection("MongoDbConfiguration"));
             services.AddControllers();
             services.AddServices();
             services.AddModels();
+            services.AddValidators();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

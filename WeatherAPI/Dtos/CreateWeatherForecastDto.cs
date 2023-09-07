@@ -1,14 +1,9 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
 
 namespace WeatherAPI.Dtos
 {
-    public class WeatherForecastDto
+    public class CreateWeatherForecastDto
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-
         [BsonElement("Date")]
         public DateTime Date { get; set; }
 
@@ -19,4 +14,3 @@ namespace WeatherAPI.Dtos
         public string Summary { get; set; }
     }
 }
-
