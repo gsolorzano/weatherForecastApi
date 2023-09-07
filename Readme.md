@@ -40,40 +40,48 @@ git clone https://github.com/gsolorzano/weatherForecastApi
 
 Navigate to the project directory:
 
-\`\`\`bash
-cd yourRepository
-\`\`\`
+```bash
+cd weatherForecastApi
+```
 
 ## Execution
 
 ### Run Locally in Visual Studio
 
+To run locally in Visual Studio you require to create the mongoDB required by the service.
+In this repo there is a script which will create a docker container with the mongoDB and mock data.
+
+To run the container initialization:
+
+1. Open a command line in the `DB` folder located in the root of the repo
+2. Run the following command:
+
+```bash
+pwsh ./setupMongo.ps1
+```
+
+To run locally the API:
+
 1. Open the `.sln` file in Visual Studio.
-2. Make sure the API project is set as the startup project.
+2. Make sure the WeatherAPI project is set as the startup project.
 3. Press `F5` to start debugging, or click `Start Debugging` from the `Debug` menu.
 
-Your API should now be running locally. Open a browser and navigate to `http://localhost:<your_port>` to test it.
+Your API should now be running locally, it will automatically open a tab on the default browser with the swagger UI.
 
 ### Run with Docker
 
-1. Open a terminal and navigate to the project directory.
-2. Build the Docker image:
+You can also run both the mongoDB and API in a docker image. In the repo there is script which will create the docker image.
 
-   \`\`\`bash
-   docker build -t yourImageName .
-   \`\`\`
+To run the script:
 
-3. Run the Docker container:
+1. Open a terminal and navigate to the `Solution Items` folder
+2. Run the following command:
 
-   \`\`\`bash
-   docker run -p yourPort:80 yourImageName
-   \`\`\`
+```bash
+pwsh ./createImage.ps1
+```
 
-Your API should now be running inside a Docker container. Open a browser and navigate to `http://localhost:<your_port>` to test it.
-
-## Usage
-
-Include example requests and responses, as well as any additional features the API may have.
+Your API should now be running inside a Docker container. Open a browser and navigate to `http://localhost:8000/swagger/index.html` to test it.
 
 ## Contributing
 
@@ -81,4 +89,4 @@ If you would like to contribute, please fork the repository and use a feature br
 
 ## License
 
-State your license here, or link to it.
+This project is licensed under the MIT License.
