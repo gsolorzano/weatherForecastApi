@@ -6,17 +6,26 @@ using WeatherAPI.Services.Interfaces;
 
 namespace WeatherAPI.Models
 {
-	public class WeatherForecastModel : IWeatherForecastModel
-	{
+    /// <summary>
+    /// WeatherForecastModel class.
+    /// </summary>
+    public class WeatherForecastModel : IWeatherForecastModel
+    {
         private readonly IWeatherForecastService _weatherForecastService;
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WeatherForecastModel"/> class.
+        /// </summary>
+        /// <param name="weatherForecastService">The WeatherForecastService.</param>
+        /// <param name="mapper">The Mapper.</param>
         public WeatherForecastModel(IWeatherForecastService weatherForecastService, IMapper mapper)
         {
             _weatherForecastService = weatherForecastService;
             _mapper = mapper;
         }
 
+        /// <inheritdoc/>
         public Result<List<WeatherForecastDto>> GetWeatherForecasts()
         {
             var forecastResult = _weatherForecastService.GetWeatherForecasts();
@@ -28,6 +37,7 @@ namespace WeatherAPI.Models
             return forecastResult;
         }
 
+        /// <inheritdoc/>
         public Result CreateWeatherForecasts(List<CreateWeatherForecastDto> createWeatherForecastDtos)
         {
             var weatherForecastDtos = _mapper.Map<List<WeatherForecastDto>>(createWeatherForecastDtos);

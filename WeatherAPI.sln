@@ -11,9 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{04483143-944A-
 		DB\setupMongo.ps1 = DB\setupMongo.ps1
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{4EED45A2-AB19-45FA-BCCD-D48E88234D6E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{702F053E-540D-4BAE-8991-D16156CFA8CB}"
 	ProjectSection(SolutionItems) = preProject
-		SolutionItems\createImage.ps1 = SolutionItems\createImage.ps1
+		Solution Items\createImage.ps1 = Solution Items\createImage.ps1
+		Solution Items\stylecop.json = Solution Items\stylecop.json
+		Solution Items\Directory.Build.props = Solution Items\Directory.Build.props
+		Solution Items\Rules.ruleset = Solution Items\Rules.ruleset
 	EndProjectSection
 EndProject
 Global

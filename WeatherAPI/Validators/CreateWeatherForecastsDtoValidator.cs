@@ -3,12 +3,18 @@ using WeatherAPI.Dtos;
 
 namespace WeatherAPI.Validators
 {
-	public class CreateWeatherForecastsDtoValidator : AbstractValidator<List<CreateWeatherForecastDto>>
+    /// <summary>
+    /// CreateWeatherForecastsDtoValidator class.
+    /// </summary>
+    public class CreateWeatherForecastsDtoValidator : AbstractValidator<List<CreateWeatherForecastDto>>
     {
-		public CreateWeatherForecastsDtoValidator()
-		{
-			RuleFor(dto => dto).NotNull().NotEmpty();
-			RuleForEach(dto => dto).SetValidator(new CreateWeatherForecastDtoValidator());
-		}
-	}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateWeatherForecastsDtoValidator"/> class.
+        /// </summary>
+        public CreateWeatherForecastsDtoValidator()
+        {
+            RuleFor(dto => dto).NotNull().NotEmpty();
+            RuleForEach(dto => dto).SetValidator(new CreateWeatherForecastDtoValidator());
+        }
+    }
 }

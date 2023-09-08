@@ -7,10 +7,17 @@ using WeatherAPI.Services.Interfaces;
 
 namespace WeatherAPI.Services
 {
+    /// <summary>
+    /// WeatherForecastService class.
+    /// </summary>
     public class WeatherForecastService : IWeatherForecastService
     {
         private readonly IMongoCollection<WeatherForecastDto> _forecasts;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WeatherForecastService"/> class.
+        /// </summary>
+        /// <param name="mongoDbConfiguration">The MongoDbConfiguration.</param>
         public WeatherForecastService(IOptions<MongoDbConfiguration> mongoDbConfiguration)
         {
             var client = new MongoClient(mongoDbConfiguration.Value.ConnectionString);
@@ -18,6 +25,7 @@ namespace WeatherAPI.Services
             _forecasts = database.GetCollection<WeatherForecastDto>("Forecasts");
         }
 
+        /// <inheritdoc/>
         public Result<List<WeatherForecastDto>> GetWeatherForecasts()
         {
             try
@@ -31,6 +39,7 @@ namespace WeatherAPI.Services
             }
         }
 
+        /// <inheritdoc/>
         public Result InsertWeatherForecasts(List<WeatherForecastDto> weatherForecastDtos)
         {
             {

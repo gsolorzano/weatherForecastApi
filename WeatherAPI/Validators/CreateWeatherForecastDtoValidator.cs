@@ -3,8 +3,14 @@ using WeatherAPI.Dtos;
 
 namespace WeatherAPI.Validators
 {
+    /// <summary>
+    /// CreateWeatherForecastDtoValidator class.
+    /// </summary>
     public class CreateWeatherForecastDtoValidator : AbstractValidator<CreateWeatherForecastDto>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateWeatherForecastDtoValidator"/> class.
+        /// </summary>
         public CreateWeatherForecastDtoValidator()
         {
             RuleFor(x => x.Date).NotEmpty();
